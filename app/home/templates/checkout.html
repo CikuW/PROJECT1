@@ -150,7 +150,7 @@
                                                             var phone_number = document.getElementById('phone_number');
                                                             var comment = document.getElementById('comment');
 
-                                                            const url='http://192.168.100.58:5000/home/my_basket/{{name}}/'+ qty
+                                                            const url='https://the-smith-restaurant.herokuapp.com/home/my_basket/{{name}}/'+ qty
                                                             console.log(url)
                                                             Http.open("post", url);
                                                             Http.send(json);
