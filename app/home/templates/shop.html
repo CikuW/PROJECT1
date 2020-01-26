@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>THE SMITH RESTAURANT | MENU</title>
+
+    <!-- Favicon  -->
+    <link href="{{ url_for('static', filename='img/core-img/favicon.icon') }}" rel="icon" type="image/png">
+    <link href="{{ url_for('static', filename='css/core-style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+
+                            <button type="submit">  <img src="{{ url_for('static', filename='img/core-img/search.png') }}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="/home/index">  <img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/home/index">  <img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt=""></a>
+            </div>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                <ul>
+                    <li><a href="/home/index">Home</a></li>
+                    <li class="active"><a href="/home/shop">Menu</a></li>
+                    <li><a href="/home/cart">Order Cart</a></li>
+                    <li><a href="/home/checkout">Checkout</a></li>
+                </ul>
+            </nav>
+          
+        
+            <!-- Social Button -->
+            <p><div class="social-info d-flex justify-content-between">
+                <a href="http://pinterest.com"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                <a href="http://instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="http://facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="http://twitters.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div></p>
+        </header>
+        <!-- Header Area End -->
+
+        <div class="shop_sidebar_area">
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget catagory mb-50">
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-30">Catagories</h6>
+
+                <!--  Catagories  -->
+                <div class="catagories-menu">
+                    <ul>
+                        <li class="active"><a id = 1 href="/home/shop/{{food_category[0]}}">{{food_category[0]}}</a></li>
+                        <li><a id = 2 href="/home/shop/{{food_category[1]}}">{{food_category[1]}}</a></li>
+                        <li><a id = 3 href="/home/shop/{{food_category[2]}}">{{food_category[2]}}</a></li>
+                        <li><a id = 4 href="/home/shop/{{food_category[3]}}">{{food_category[3]}}</a></li>
+                        <li><a id = 5 href="/home/shop/{{food_category[4]}}">{{food_category[4]}}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ##### Single Widget ##### -->
+            
+            <!-- ##### Single Widget ##### -->
+            <div class="widget price mb-50">
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-30">Price</h6>
+
+                <div class="widget-desc">
+                    <div class="slider-range">
+                        <div data-min="150" data-max="2500" data-unit="Ksh" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="150" data-value-max="2500" data-label-result="">
+                            <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                        </div>
+                        <div class="range-price">KSH150 - KSH2500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="amado_product_area section-padding-100">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                           
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+
+                                {% block content %}
+                                 {% for i in food_images %}
+                                 {% set image = food_images[loop.index-1] %}
+                                 {% set price = food_prices[loop.index-1] %}
+                                 {% set name = food_names[loop.index-1] %}
+                                 {% set description = food_descriptions[loop.index-1] %}
+                                 {% set category = category%}
+
+
+                                 
+                    <!-- Single Product Area -->
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                  <img src="{{ url_for('static', filename=image) }}" alt="">
+                            </div>
+
+                            <!-- Product Description -->
+                            <div class="product-description d-flex align-items-center justify-content-between">
+                                <!-- Product Meta Data -->
+                                <div class="product-meta-data">
+                                    <div class="line"></div>
+                                    <p class="product-price">Ksh {{price}}</p>
+                                    <a href="/home/product/{{loop.index}}/{{category}}">
+                                        <h6>{{name}}</h6>
+                                        <div>{{description}}</div>
+                                    </a>
+                                </div>
+                                <!-- Ratings & Cart -->
+                                <div class="ratings-cart text-right">
+                                    <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="cart">
+                                        <a href="/home/cart/{{loop.index}}/{{category}}" data-toggle="tooltip" data-placement="left" title="Add to Cart">  <img src="{{ url_for('static', filename='img/core-img/cart.png') }}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     {% endfor %}
+                                                                        {% endblock %}
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer_area clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-4">
+                    <div class="single_widget_area">
+                        <!-- Logo -->
+                        <div class="footer-logo mr-50">
+                            <a href="/home/index">  <img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt=""></a>
+                        </div>
+                        <p class="about"> The Smith Restaurant is a family - themed fine dining restaurant dedicated to delivering the best food and service to our customers.</p>
+                    </div>
+                </div>
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="single_widget_area">
+                        <!-- Footer Menu -->
+                        <div class="footer_menu">
+                            <nav class="navbar navbar-expand-lg justify-content-end">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+                                <div class="collapse navbar-collapse" id="footerNavContent">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="/home/index">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/home/shop">Menu</a>
+                                        </li>
+                                       <li class="nav-item">
+                                            <a class="nav-link" href="/home/cart">Order Cart</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/home/checkout">Checkout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+        <script src="{{ url_for('static', filename='js/jquery/jquery-2.2.4.min.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+        <!-- Active js -->
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='js/active.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='js/active.js') }}"></script>
+
+
+</body>
+
+</html>

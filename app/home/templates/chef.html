@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Chef order management</h2>
+  
+<table class="table table-bordered">
+  <!-- Table head -->
+  <thead>
+    <tr>
+      <th>Confirm</th>
+      <th>Order</th>
+      <th>Quantity</th>
+      <th>Ready</th>
+    </tr>
+  </thead>
+  <!-- Table head -->
+
+  <!-- Table body -->
+  <tbody>
+                                  {% block content %}
+                                 {% for i in cart %}
+                                 {% set carts = cart[loop.index-1] %}
+                                 {% set quantities = quantity[loop.index-1] %}
+                                      <tr>
+                                        <th scope="row">
+                                          <!-- Material unchecked -->
+                                          <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="tableMaterialCheck2">
+                                            <label class="form-check-label" for="tableMaterialCheck2"></label>
+                                          </div>
+                                        </th>
+                                        <td>{{carts}}</td>
+                                        <td>{{quantities}}</td>
+                                        <td>
+                                           <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="tableMaterialCheck2">
+                                            <label class="form-check-label" for="tableMaterialCheck2"></label>
+                                          </div>
+                                        </td>
+                                      </tr>
+
+                                       {% endfor %}
+                                         {% endblock %}
+
+
+
+
+  </tbody>
+  <!-- Table body -->
+</table>
+<!-- Table  -->
+
+</div>
+
+</body>
+</html>

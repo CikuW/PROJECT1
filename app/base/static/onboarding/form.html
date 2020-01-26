@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Onboarding Form </title>
+
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--w3 css-->
+    <link rel="stylesheet" href="w3.css">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" href="form.css">
+
+    <!--Icon-->
+    <link rel="icon" href="smaji_icon.ico">
+
+    <!--Axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--momentjs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+
+    <!--Google Maps API-->
+    <script type="text/javascript" src='http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyBCa6yfk7Lo0PMv4QfmS4w3miInK9Vi_Kw'></script>
+</head>
+<body>
+    <!--Form container-->
+    <div class="form-container">
+        <div class="card">
+            <div class="card-body">
+                <h1> SMAJI </h1>
+                <form action="?" class="w3-form onboarding-form" method="POST">
+                    <span class="form-titles"> PROPERTY DETAILS </span><br>
+                    <div class="form-group">
+                        <label for="owner" class="w3-label"> Property Owner </label>
+                        <input type="text" name="property-owner" id="owner" class="w3-input form-control" title="Name of Property Owner">
+                    </div>
+                    <div class="form-group">
+                        <label for="location" class="w3-label"> Property Location </label>
+                        <input type="text" name="property-location" id="location" class="w3-input form-control" title="Location where property is located">
+                        <div id="us2" style="width: 100%; height: 300px; position: relative; margin-top: 10px;"></div>
+                    </div>
+                    <br>
+                    <span class="form-titles"> TANK DETAILS </span><br>
+                    <div class="form-group">
+                        <label for="volume" class="w3-label"> Tank Volume </label>
+                        <input type="text" name="tank-volume" id="volume" class="w3-input form-control" title="Volume of the tank in Litres">
+                    </div>
+                    <div class="form-group">
+                        <label for="height" class="w3-label"> Tank Height/Depth </label>
+                        <input type="text" name="tank-height" id="height" class="w3-input form-control" title="Height/Depth of the tank">
+                    </div>
+                    <div class="form-group">
+                        <label for="shape" class="w3-label"> Tank Shape </label>
+                        <select name="tank-shape" id="shape" class="form-control" title="Select the shape of the tank">
+                            <option value="round" selected> Round </option>
+                            <option value="rectangular"> Rectangular </option>
+                            <option value="other"> Other </option>
+                        </select>
+                    </div>
+                    <br>
+                    <span class="form-titles"> DEVICE DETAILS </span><br>
+                    <div class="form-group">
+                        <label for="id" class="w3-label"> Device ID </label>
+                        <input type="text" name="device-id" id="id" class="w3-input form-control" title="Unique device ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="manufacturer" class="w3-label"> Device Manufacturer </label>
+                        <input type="text" name="device-manufacturer" id="manufacturer" class="w3-input form-control" title="The manufacturer of the device-manufacturer">
+                    </div>
+                    <div id="battery-level-holder"></div>
+                    <div class="form-group">
+                        <label for="date" class="w3-label"> Comissioning Date </label>
+                        <input type="date" name="device-manufacturer" id="date" class="w3-input form-control" title="Date of registration">
+                    </div>
+                    <br>
+                    <input type="submit" value="REGISTER" class="submit-btn">
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!--JS script-->
+<script src="form.js"></script>
+<script src="locationpicker.jquery.js"></script>
+<script>
+    $('#us2').locationpicker({
+    enableAutocomplete: true,
+        enableReverseGeocode: true,
+    radius: 0,
+    inputBinding: {
+        //latitudeInput: $('#us2-lat'),
+        //longitudeInput: $('#us2-lon'),
+        //radiusInput: $('#us2-radius'),
+        locationNameInput: $('#location')
+    },
+    onchanged: function (currentLocation, radius, isMarkerDropped) {
+            var addressComponents = $(this).locationpicker('map').location.addressComponents;
+        console.log(currentLocation);  //latlon  
+        updateControls(addressComponents); //Data
+        }
+    });
+
+    function updateControls(addressComponents) {
+    console.log(addressComponents);
+    }
+</script>
+</body>
+</html>

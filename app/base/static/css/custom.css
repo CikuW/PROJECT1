@@ -1,0 +1,252 @@
+body {
+    font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+
+    background-color: #f6f7fb;
+    color: #888da8;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    overflow-x: hidden;
+}
+
+/* Login page */
+
+.anaytics-slideshow {
+    width:100%;
+    height:100vh:
+    position:relative;
+}
+
+.bg-image {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+}
+
+/* Button to add new device*/
+
+.floating-button {
+    position:fixed;
+    bottom:30px;
+    right:20px;
+    width:45px;
+    height:45px;
+    background-color:#ff0066;
+    border-radius:50%;
+    padding-left:15px;
+
+}
+
+/* Add new divice form styles */
+
+.stepwizard-step p {
+    margin-top: 10px;
+}
+.stepwizard-row {
+    display: table-row;
+}
+.stepwizard {
+    display: table;
+    width: 80%;
+    position: relative;
+    margin: 10px auto;
+}
+.stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+.stepwizard-row:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;
+}
+.stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+.stepwizard-step .btn, .stepwizard-step .btn-primary, .stepwizard-step .btn-circle, .stepwizard-step .btn-default {
+    width:40px;
+    height:40px;
+    display:inline-block;
+    padding: 5px 0px;
+}
+
+.live-view-btn {
+    background-color:#ff3333;
+    color:white;
+    font-weight:bold;
+}
+
+.live-view-data {
+    padding:20px;
+    position:relative;
+    width:100%;
+    height:auto;
+}
+
+.add-device-form {
+    padding-left:10%;
+}
+
+.nextBtn {
+    background-color:teal!important;
+    float:right!important;
+}
+
+.prevBtn {
+    background-color:teal!important;
+    float:left!important;
+}
+
+.apis input {
+    width:250px;
+    margin-right:20px;
+}
+
+.apis {
+    display:inline-block;
+}
+
+.copy-btn {
+    position:absolute;
+    bottom:17px;
+    left:320px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color:black!important;
+    display: inline-block;
+}
+
+.devices-summary {
+    width:100%;
+    text-align:center;
+    position:relative;
+}
+
+.token input {
+    position:relative;
+    display:inline-block;
+    border:1px solid #D8D8D8;
+    width:350px;
+    height:40px;
+    padding:5px;
+}
+
+.devices-summary span {
+    display:inline-block;
+    margin-right:30px;
+}
+
+nextbtn-div a {
+    display:inline-block;
+    float:right:
+    margin-left:20px;
+}
+
+.live-view-selects {
+    display:inline-block;
+    position:relative;
+    width:300px;
+    margin-right:20px;
+}
+
+/* The data dropdowns in live view modal */
+.data-dropdowns {
+    position: relative;
+    width:90%;
+    margin: 10px auto;
+}
+
+.data-dropdowns span {
+    color: black;
+}
+
+.date-picker input, .type select {
+    position: relative;
+    width:300px;
+    height: 60px;
+    border:0.5px solid #D3D3D3;
+    font-size: 20px;
+    padding-left: 5px;
+    color: #888da8!important;
+}
+
+.type select option {
+    padding: 10px;
+    border-bottom: 0.3px solid #D3D3D3;
+    font-size: 17px;
+    font-family: Roboto, sans-serif;
+}
+
+ /*Live view slider */
+ .mySlides {
+    display: none;
+ }
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: gray;
+  font-weight: bold;
+  font-size: 30px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  color: black;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+/* Device id status color */
+#statusColor {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #28a745;
+    margin-right: 10px;
+}
+
+/* Date Picker */
+.date-picker {
+    padding: 5px;
+    clear: right;
+}
+
+.date-picker input {
+    margin-bottom: 5px;
+}
+
+/* Line chart container */
+.linechart-container, barchart-container {
+    height: 400px;
+    width: 90%;
+    position: relative;
+    margin: 10px auto;
+}
+
+

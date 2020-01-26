@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>THE SMITH RESTAURANT | Home</title>
+
+    <!-- Favicon  -->
+    <link href="{{ url_for('static', filename='img/core-img/favicon.icon') }}" rel="icon" type="image/png">
+    <link href="{{ url_for('static', filename='css/core-style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                            <button type="submit"><img  src="{{ url_for('static', filename='img/core-img/search.png') }}"  alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="index"><img  src="{{ url_for('static', filename='img/core-img/logo.png') }}"  alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index"><img  src="{{ url_for('static', filename='img/core-img/logo.png') }}"  alt=""></a>
+            </div>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                <ul>
+                    <li class="active"><a href="index">Home</a></li>
+                    <li><a href="cart">Order cart</a></li>
+                    <li><a href="checkout">Checkout</a></li>
+                </ul>
+            </nav>
+       
+            <!-- Social Button -->
+            <p><div class="social-info d-flex justify-content-between">
+                <a href="http://pinterest.com"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                <a href="http://instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="http://facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="http://twitters.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div></p>
+        </header>
+        <!-- Header Area End -->
+
+        <!-- Product Catagories Area Start -->
+        <div class="products-catagories-area clearfix">
+            <div class="amado-pro-catagory clearfix">
+                                 {% block content %}
+                                 {% for i in food_images %}
+                                 {% set image = food_images[loop.index-1] %}
+                                 {% set price = food_prices[loop.index-1] %}
+                                 {% set category = food_categories[loop.index-1] %}
+
+                <!-- Single Catagory -->
+                <div class="single-products-catagory clearfix">
+                    <a href="shop/{{category}}">
+                        <img  src="{{ url_for('static', filename=image) }}" alt="">
+                        <!-- Hover Content -->
+                        <div class="hover-content">
+                            <div class="line"></div>
+                            <p>From Ksh {{price}}</p>
+                            <h4>{{category}}</h4>
+                        </div>
+                    </a>
+                </div>
+                 {% endfor %}
+                                                                        {% endblock %}
+
+            </div>
+        </div>
+        <!-- Product Catagories Area End -->
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer_area clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-4">
+                    <div class="single_widget_area">
+                        <!-- Logo -->
+                        <div class="footer-logo mr-50">
+                            <a href="index"><img  src="{{ url_for('static', filename='img/core-img/logo.png') }}"  alt=""></a>
+                        </div>
+                        <p class="about"> The Smith Restaurant is a family - themed fine dining restaurant dedicated to delivering the best food and service to our customers.</p>
+                    </div>
+                </div>
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="single_widget_area">
+                        <!-- Footer Menu -->
+                        <div class="footer_menu">
+                            <nav class="navbar navbar-expand-lg justify-content-end">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+                                <div class="collapse navbar-collapse" id="footerNavContent">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="index">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="shop">Menu</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="cart">Order Cart</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="checkout">Checkout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <script src="{{ url_for('static', filename='js/jquery/jquery-2.2.4.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <!-- Active js -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/active.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/active.js') }}"></script>
+</body>
+
+</html>

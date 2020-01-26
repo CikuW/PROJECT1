@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>SMITH RESTAURANT</title>
+	<meta charset="UTF-8">
+    <link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, shrink-to-fit=yes">
+
+
+	    <link href="{{ url_for('static', filename='images/smaji_logo.png') }}" rel="icon" type="image/png">
+        <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='fonts/iconic/css/material-design-iconic-font.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='vendor/animate/animate.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
+	    <link href="{{ url_for('static', filename='vendor/animsition/css/animsition.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}" rel="stylesheet" type="text/css">
+
+
+        <link href="{{ url_for('static', filename='css/util.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" action="" method="post">
+
+					<span class="login100-form-title p-b-48">
+						<img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt="" style="width:40px;height:40px;">
+					</span>
+					<span class="login100-form-title p-b-26">
+						 THE SMITH RESTAURANT
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+						<input class="input100" type="text" name="email" value="{{ request.form.email }}">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="pass" value="{{ request.form.pass }}">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" href="shop" type="submit" style="background-color: #964B00" >
+								Login
+							</button>
+						</div>
+					</div>
+
+					<div class="text-center p-t-115">
+						<a class="txt2" href="/home/index">
+							i AM A CUSTOMER.
+						</a>
+                        <br><br>
+						<span class="txt1">
+							Don’t have an account?
+						</span>
+						<a class="txt2" href="/sign_up">
+							Sign Up
+						</a>
+					</div>
+
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+
+	<script src="{{ url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/countdowntime/countdowntime.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+
+
+
+
+
+</body>
+</html>

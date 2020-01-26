@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(document).ajaxError(function(){
+    alert("New Order fulfilled.Table Number 15.");
+  });
+  $("button").click(function(){
+    $("div").load("wrongfile.txt");
+  });
+});
+</script>
+</head>
+<body>
+
+<div><h2></h2></div>
+
+<button> </button>
+
+</body>
+</html>

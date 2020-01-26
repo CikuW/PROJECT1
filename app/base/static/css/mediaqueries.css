@@ -1,0 +1,16 @@
+@media only screen and (max-width: 990px) {
+    .live-view-selects {
+        display:block;
+        margin-left:10px!important;
+        margin-top:20px!important;
+        padding-left:0px!important;
+        width:95%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .supply-days {
+        float: left!important;
+        display: block!important;
+    }
+}
