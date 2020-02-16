@@ -133,7 +133,7 @@ $(document).ready(function(){
 				$(this).parent("td").html($(this).val());
 				console.log($(this).val());
                 const Http = new XMLHttpRequest();
-                const url='http://nelius.thesmith.com/home/edit/'+ $(this).val() +'/'+  $(this).parent("tr").rowIndex;
+                const url='http://the-smith-restaurant.herokuapp/home/edit/'+ $(this).val() +'/'+  $(this).parent("tr").rowIndex;
                 console.log(url)
                 Http.open("GET", url);
                 Http.send();

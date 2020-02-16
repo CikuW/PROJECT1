@@ -157,7 +157,7 @@
                                                             var phone_number = document.getElementById('phone_number');
                                                             var comment = document.getElementById('comment');
 
-                                                            const url='http://nelius.thesmith.com/home/my_basket/{{name}}/'+ qty
+                                                            const url='http://the-smith-restaurant.herokuapp/home/my_basket/{{name}}/'+ qty
                                                             console.log(url)
                                                             Http.open("post", url);
                                                             Http.send(json);
