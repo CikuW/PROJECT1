@@ -5,7 +5,7 @@
 <link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap Table with Add and Delete Row Feature</title>
+<title>MANAGER</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -140,9 +140,21 @@ $(document).ready(function(){
 	$(document).on("click", ".edit", function(){		
         $(this).parents("tr").find("td:not(:last-child)").each(function(){
 			$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                const Http = new XMLHttpRequest();
+                const url='http://{{ip}}/home/edit/'+ $(this).text()
+                console.log(url)
+                Http.open("GET", url);
+                Http.send();
+                Http.onreadystatechange = (e) => {
+                  console.log(Http.responseText)
+                }
+
+
 		});		
 		$(this).parents("tr").find(".add, .edit").toggle();
 		$(".add-new").attr("disabled", "disabled");
+
+
     });
 	// Delete row on delete button click
 	$(document).on("click", ".delete", function(){
@@ -151,6 +163,7 @@ $(document).ready(function(){
     });
 });
 </script>
+
 </head>
 <body>
     <div class="container">

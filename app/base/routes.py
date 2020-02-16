@@ -74,7 +74,6 @@ def register():
         form_data = {}
         form_data["username"] = request.form['name']
         form_data["password"] = request.form['pass']#pbkdf2_sha256.encrypt(request.form['password'], rounds=200000, salt_size=16)
-        form_data["phone"] = request.form['number']
         form_data["email"] = request.form['email']
         form_data["work"] = request.form['bool']
 

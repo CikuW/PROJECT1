@@ -77,13 +77,13 @@ $(document).ready(function(){
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index"><img src="img/core-img/logo.png" alt=""></a>
-            </div>
+                <a href="/home/index">  <img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt=""></a>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li><a href="index">Menu</a></li>
-                    <li class="active"><a href="cart">Order Cart</a></li>
+                    <li><a href="index">Home</a></li>
+                    <li><a href="shop/BREAKFAST">Menu</a></li>
+                    <li class="active"><a href="cart">My Order ( {{count}} )</a></li>
                     <li><a href="checkout">Checkout</a></li>
                 </ul>
             </nav>
@@ -103,7 +103,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-12 col-lg-8">
                         <div class="cart-title mt-50">
-                            <h2>ORDERING CART</h2>
+                            <h2>MY ORDER</h2>
                         </div>
 
                         <div class="cart-table clearfix">
@@ -160,14 +160,14 @@ $(document).ready(function(){
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="cart-summary">
-                            <h5>ORDER TOTAL</h5>
+                            <h5>MY TOTAL</h5>
                             <ul class="summary-table">
                                 <li><span>total: KSH.</span> <span id = price> {{Total}}</span></li>
                                 <li><span>ETA:</span> <span id =eta>{{my_ETA}}</span><span> Minutes </span></li>
 
                             </ul>
                             <div class="cart-btn mt-100">
-                                <a href="checkout" class="btn amado-btn w-100"> Checkout </a>
+                                <a href="entertainment" class="btn amado-btn w-100"> CONFIRM ORDER</a>
                             </div>
                         </div>
                     </div>
@@ -176,13 +176,6 @@ $(document).ready(function(){
         </div>
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
-    <script type="text/javascript">
-        
-
-
-
-    </script>>
-
     
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer_area clearfix">
@@ -207,14 +200,14 @@ $(document).ready(function(){
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
+                                        <li class="nav-item ">
                                             <a class="nav-link" href="index">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="shop">Menu</a>
+                                            <a class="nav-link" href="shop/BREAKFAST">Menu</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart">Order Cart</a>
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="cart">My Order</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="checkout">Checkout</a>

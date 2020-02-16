@@ -62,13 +62,13 @@
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index"><img src="img/core-img/logo.png" alt=""></a>
-            </div>
+                <a href="/home/index">  <img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt=""></a>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li><a href="/home/index">Menu</a></li>
-                    <li><a href="/home/cart">Cart</a></li>
+                    <li><a href="/home/index">Home</a></li>
+                    <li><a href="shop/BREAKFAST">Menu</a></li>
+                    <li><a href="/home/cart">My Order ( {{count}} )</a></li>
                     <li class="active"><a href="/home/checkout">Checkout</a></li>
                 </ul>
             </nav>
@@ -90,13 +90,17 @@
                         <div class="checkout_details_area mt-50 clearfix">
 
                             <div class="cart-title">
-                                <h2>Checkout</h2>
+                                <h4>HOW WAS YOUR DINING EXPERIENCE?</h4>
+                                <h5>PLEASE LEAVE A COMMENT(OPTIONAL)</h5>
                             </div>
 
                             <form action="#" method="post">
                                 <div class="row">
                                     <div class="col-12 mb-3">
-                                        <input type="text" class="form-control" id ="name" value="" placeholder="First Name" required>
+                                        <textarea id="comment" class="form-control w-100" id="comment" cols="30" rows="10" placeholder="Leave a comment about your order"></textarea>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <input type="text" class="form-control" id ="name" value="" placeholder="Name" required>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <input type="email" class="form-control" id="email" placeholder="Email" value="">
@@ -105,10 +109,6 @@
                                     <div class="col-12 mb-3">
                                         <input type="phone_number" class="form-control" id="phone_number" placeholder="Phone number" value="">
                                     </div>
-                                    <div class="col-12 mb-3">
-                                        <textarea id="comment" class="form-control w-100" id="comment" cols="30" rows="10" placeholder="Leave a comment about your order"></textarea>
-                                    </div>
-
                                     
                                 </div>
                             </form>
@@ -116,10 +116,9 @@
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="cart-summary">
-                            <h5>Cart Total</h5>
+                            <h5>My Total</h5>
                             <ul class="summary-table">
                                 <li><span>total:</span> <span>Ksh.{{prices}}</span></li>
-                                <li><span>ETA:</span> <span>{{my_ETA}} Minutes</span></li>
                             </ul>
 
                             <div class="payment-method">
@@ -132,10 +131,18 @@
                                     <input type="checkbox" class="custom-control-input" id="code" >
                                     <label class="custom-control-label" for="cod">Mpesa</label>
                                 </div>
+                                <div class="custom-control custom-checkbox mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" id="code" >
+                                    <label class="custom-control-label" for="cod">Card</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" id="code" >
+                                    <label class="custom-control-label" for="cod">Coupon</label>
+                                </div>
 
                             </div>
                             <div class="cart-btn mt-100">
-                                <a href="index" class="btn amado-btn w-100" onclick= "myfunction()" type="submit"> Checkout </a>
+                                <a href="index" class="btn amado-btn w-100" onclick= "myfunction()" type="submit"> READY TO PAY </a>
                             </div>
 
                     </div>
@@ -150,7 +157,7 @@
                                                             var phone_number = document.getElementById('phone_number');
                                                             var comment = document.getElementById('comment');
 
-                                                            const url='https://the-smith-restaurant.herokuapp.com/home/my_basket/{{name}}/'+ qty
+                                                            const url='http://nelius.thesmith.com/home/my_basket/{{name}}/'+ qty
                                                             console.log(url)
                                                             Http.open("post", url);
                                                             Http.send(json);
@@ -169,7 +176,7 @@
     <!-- ##### Main Content Wrapper End ##### -->
 
     
-    <!-- ##### Footer Area Start ##### -->
+        <!-- ##### Footer Area Start ##### -->
     <footer class="footer_area clearfix">
         <div class="container">
             <div class="row align-items-center">
@@ -180,8 +187,8 @@
                         <div class="footer-logo mr-50">
                             <a href="index"><img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt=""></a>
                         </div>
-                        <p class="about"> The Smith Restaurant is a family - themed fine dining restaurant dedicated to delivering the best food and service to our customers.</p>
-                    </div>
+            <p class="about"> The Smith Restaurant is a family - themed fine dining restaurant dedicated to delivering the best food and service to our customers.</p>                   
+ </div>
                 </div>
                 <!-- Single Widget Area -->
                 <div class="col-12 col-lg-8">
@@ -192,17 +199,16 @@
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
+                                        <li class="nav-item ">
                                             <a class="nav-link" href="index">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="shop">Menu</a>
+                                            <a class="nav-link" href="shop/BREAKFAST">Menu</a>
                                         </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="cart">My Order</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart">Order sCart</a>
-                                        </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item active">
                                             <a class="nav-link" href="checkout">Checkout</a>
                                         </li>
                                     </ul>
@@ -214,6 +220,7 @@
             </div>
         </div>
     </footer>
+
     <!-- ##### Footer Area End ##### -->
 
     <script src="{{ url_for('static', filename='js/jquery/jquery-2.2.4.min.js') }}"></script>

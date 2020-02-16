@@ -4,23 +4,24 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap Table with Add and Delete Row Feature</title>
+<title>MANAGER</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
     body {
         color: #404E67;
-        background: #F5F7FA;
+        background: #000080;
 		font-family: 'Open Sans', sans-serif;
 	}
 	.table-wrapper {
 		width: 700px;
 		margin: 30px auto;
-        background: #fff;
+        background: #FFF8DC;
         padding: 20px;	
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
@@ -49,7 +50,7 @@
         table-layout: fixed;
     }
     table.table tr th, table.table tr td {
-        border-color: #e9e9e9;
+        border-color: #000000;
     }
     table.table th i {
         font-size: 13px;
@@ -69,10 +70,10 @@
         color: #27C46B;
     }
     table.table td a.edit {
-        color: #FFC107;
+        color: #000000;
     }
     table.table td a.delete {
-        color: #E34724;
+        color: #000000;
     }
     table.table td i {
         font-size: 19px;
@@ -130,6 +131,16 @@ $(document).ready(function(){
 		if(!empty){
 			input.each(function(){
 				$(this).parent("td").html($(this).val());
+				console.log($(this).val());
+                const Http = new XMLHttpRequest();
+                const url='http://nelius.thesmith.com/home/edit/'+ $(this).val() +'/'+  $(this).parent("tr").rowIndex;
+                console.log(url)
+                Http.open("GET", url);
+                Http.send();
+                Http.onreadystatechange = (e) => {
+                  console.log(Http.responseText)
+                }
+
 			});			
 			$(this).parents("tr").find(".add, .edit").toggle();
 			$(".add-new").removeAttr("disabled");
@@ -139,6 +150,8 @@ $(document).ready(function(){
 	$(document).on("click", ".edit", function(){		
         $(this).parents("tr").find("td:not(:last-child)").each(function(){
 			$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+
+
 		});		
 		$(this).parents("tr").find(".add, .edit").toggle();
 		$(".add-new").attr("disabled", "disabled");
@@ -158,7 +171,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-8"><h2>Food <b>Details</b></h2></div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New Item To Menu</button>
                     </div>
                 </div>
             </div>
@@ -187,9 +200,9 @@ $(document).ready(function(){
                         <td>{{quantity}}</td>
 
                         <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i>ADD</a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i>EDIT</a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i>DELETE</a>
                         </td>
                     </tr>
 

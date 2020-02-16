@@ -11,11 +11,11 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     firstname = StringField('First Name', validators=[validators.InputRequired()], render_kw={'placeholder': 'Enter first name', 'class': 'input'})
     lastname = StringField('Last Name', validators=[validators.InputRequired()], render_kw={'placeholder': 'Enter last name', 'class': 'input'})
-    number = StringField('Phone Number', validators=[validators.InputRequired()], render_kw={'placeholder': 'Enter phone number', 'class': 'input'})
+  
     email = StringField('Email', validators=[validators.InputRequired(), validators.Email(message='Invalid Email')], render_kw={'placeholder': 'Enter email', 'class': 'input'})
     password = PasswordField('Password', validators=[validators.InputRequired(), validators.Length(min=4)], render_kw={'placeholder': 'Enter password', 'class': 'input'})
-    terms = BooleanField('I agree to the SMAJI Terms and Conditions', validators=[InputRequired()])
-
+    
+    
 class DeviceForm(FlaskForm):
     id = IntegerField('Device Id', validators=[InputRequired()], render_kw={"placeholder": "Device Id"})
     location = StringField('Device Location', validators=[InputRequired()], render_kw={"placeholder": "Device Location"})

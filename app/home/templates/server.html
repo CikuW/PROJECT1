@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>SERVER</title>
 <link href="{{ url_for('static', filename='img/core-img/logo_s.png') }}" rel="shortcut icon">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
   $(document).ajaxError(function(){
-    alert("New Order fulfilled.Table Number 15.");
+    alert("New Order filled.Table Number 15.");
   });
   $("button").click(function(){
     $("div").load("wrongfile.txt");
@@ -18,7 +19,7 @@ $(document).ready(function(){
 
 <div><h2></h2></div>
 
-<button> </button>
+<button>CLICK TO REFRESH ORDERS</button>
 
 </body>
 </html>
