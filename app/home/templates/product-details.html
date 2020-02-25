@@ -184,7 +184,7 @@
                                                             var effect = document.getElementById('qty');
                                                             var qty = effect.value;
                                                             const Http = new XMLHttpRequest();
-                                                            const url='http://the-smith-restaurant.herokuapp.com/home/my_basket/{{name}}/'+ qty
+                                                            const url='http://the-smith-restaurant.herokuapp.com/home/my_basket/{{url_name}}/'+ qty
                                                             console.log(url)
                                                             Http.open("GET", url);
                                                             Http.send();

@@ -3,6 +3,8 @@ from flask import render_template,request,redirect,url_for
 from flask_login import login_required
 import math
 import socket
+import time
+
 
 food_category = ["BREAKFAST", "BEVERAGES", "MAIN DISHES", "SIDE DISHES", "BITES"] ;
 food_name = ["Two Eggs", "Two Eggs with bacon", "FULL SMITH BREAKFAST", "Plain Omelette", "Espresso-Single", "Espresso-Double", "African Mixed Tea Pot", "Milk", "Fruit Juice", "Smoothie", "Beef Burger", "Pan Fried Fish", "Pork Chops", "T-bone Steak", "Mixed Grill Platter", "Vegetable Ratatoule", "Chips", "Ugali", "Plain Rice", "Vegies", "Choma sausages", "Kebab", "American Pancakes", "Marble cake"];
@@ -29,9 +31,65 @@ ETA = []
 confirmed_order_cart = []
 confirmed_order_quantity = []
 
-@blueprint.route('/esp',methods=['GET'])
-def esp():
-    return ("hello \n")
+
+from datetime import timedelta
+from flask import make_response, request, current_app
+from functools import update_wrapper
+
+def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
+                attach_to_all=True, automatic_options=True):
+    """Decorator function that allows crossdomain requests.
+      Courtesy of
+      https://blog.skyred.fi/articles/better-crossdomain-snippet-for-flask.html
+    """
+    if methods is not None:
+        methods = ', '.join(sorted(x.upper() for x in methods))
+    # use str instead of basestring if using Python 3.x
+    if headers is not None and not isinstance(headers, basestring):
+        headers = ', '.join(x.upper() for x in headers)
+    # use str instead of list if using Python 3.x
+    if not isinstance(origin, list):
+        origin = ', '.join(origin)
+    if isinstance(max_age, timedelta):
+        max_age = max_age.total_seconds()
+
+    def get_methods():
+        """ Determines which methods are allowed
+        """
+        if methods is not None:
+            return methods
+
+        options_resp = current_app.make_default_options_response()
+        return options_resp.headers['allow']
+
+    def decorator(f):
+        """The decorator function
+        """
+        def wrapped_function(*args, **kwargs):
+            """Caries out the actual cross domain code
+            """
+            if automatic_options and request.method == 'OPTIONS':
+                resp = current_app.make_default_options_response()
+            else:
+                resp = make_response(f(*args, **kwargs))
+            if not attach_to_all and request.method != 'OPTIONS':
+                return resp
+
+            h = resp.headers
+            h['Access-Control-Allow-Origin'] = origin
+            h['Access-Control-Allow-Methods'] = get_methods()
+            h['Access-Control-Max-Age'] = str(max_age)
+            h['Access-Control-Allow-Credentials'] = 'true'
+            h['Access-Control-Allow-Headers'] = \
+                "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+            if headers is not None:
+                h['Access-Control-Allow-Headers'] = headers
+            return resp
+
+        f.provide_automatic_options = False
+        return update_wrapper(wrapped_function, f)
+    return decorator
+
 
 
 @blueprint.route('/cart')
@@ -60,7 +118,9 @@ def cart_delete(template):
     return  redirect(url_for('home_blueprint.cart'))
 
 @blueprint.route('/my_basket/<template>/<template1>',methods=["GET"])
+@crossdomain(origin='*')
 def my_basket(template,template1):
+    template =  template.replace("*"," ")
 
     if template not in carts:
         prices.append(int(food_price[food_name.index(template)]))
@@ -71,7 +131,6 @@ def my_basket(template,template1):
     else:
         item_index = carts.index(template)
         quantity[item_index] = str(int(quantity[item_index])+ int(template1)) 
-
 
     return("None")
 
@@ -130,8 +189,8 @@ def menuitems():
 
 
 @blueprint.route('/index')
-def index(): 
-    count= menuitems()   
+def index():
+    count= menuitems()
     return render_template('index.html',food_images=category_images,food_prices=category_price,food_categories=food_category, count=count)
 
 @blueprint.route('/shop/<template>',methods=["GET","POST"])
@@ -155,7 +214,6 @@ def product(template,template1):
     index = (int(template)-1)
 
     keys = list(menu.keys())
-
     pos = keys.index(template1)
 
     print(keys)
@@ -175,8 +233,11 @@ def product(template,template1):
     price =  food_price[index]
     description = food_description[index]
     ip = my_ip_address()
-
-    return render_template('product-details.html',ip = ip,my_img=img, name =name, instock=instock, price= price, description=description, count=count)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind(('0.0.0.0', 0))
+    port= str(sock.getsockname()[1])
+    url_name = name.replace(" ","*")
+    return render_template('product-details.html',ip = ip,port=port,my_img=img,url_name = url_name, name =name, instock=instock, price= price, description=description, count=count)
 
 
 @blueprint.route('/<template>')
@@ -211,5 +272,7 @@ def entertainment():
 def my_ip_address():
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
-    return (str(IPAddr))
- 
+    return (str(IPAddr),str)
+
+
+
